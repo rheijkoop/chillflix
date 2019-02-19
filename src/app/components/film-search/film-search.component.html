@@ -1,0 +1,14 @@
+<input class="mb-5 mt-5 mx-auto d-block form-control w-25"
+       placeholder="search by films title"
+       type="search"
+       [(ngModel)]="userInput"
+       (change)="handleSearchInputChange(userInput)">
+
+<div class="d-flex justify-content-around">
+    <div *ngFor="let film of films" [routerLink]="'/film-details/' + film.imdbId">
+        <div class="card">
+            <div class="p-3">{{film.title}}</div>
+            <img src="{{film.poster}}" class="w-100">
+        </div>
+    </div>
+</div>

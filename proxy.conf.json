@@ -1,0 +1,6 @@
+{
+  "/omdb/api": {
+    "target": "https://ix0mst5aq9.execute-api.us-east-2.amazonaws.com/default/OMDB-movie-db",
+    "secure": false
+  }
+}
