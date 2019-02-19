@@ -6,34 +6,34 @@ import {take, tap} from 'rxjs/operators';
 
 
 @Component({
-    selector: 'app-film-details',
-    templateUrl: './film-details.component.html',
-    styleUrls: ['./film-details.component.scss']
+	selector: 'app-film-details',
+	templateUrl: './film-details.component.html',
+	styleUrls: ['./film-details.component.scss']
 })
 export class FilmDetailsComponent implements OnInit {
 
-    public filmDetails: FilmDetail | undefined = undefined;
+	public filmDetails: FilmDetail | undefined = undefined;
 
-    constructor(private activatedRoute: ActivatedRoute,
-                private filmService: FilmService
-                ) {
-    }
+	constructor(private activatedRoute: ActivatedRoute,
+	            private filmService: FilmService
+	) {
+	}
 
-    ngOnInit() {
-        this.activatedRoute.params
-            .pipe(
-                tap(params => this.setFilmDeTails(params.imdbId)),
-                take(1)
-            )
-            .subscribe();
-    }
+	ngOnInit() {
+		this.activatedRoute.params
+			.pipe(
+				tap(params => this.setFilmDeTails(params.imdbId)),
+				take(1)
+			)
+			.subscribe();
+	}
 
-    private setFilmDeTails(filmId: string) {
-        return this.filmService.filmById(filmId)
-            .pipe(
-                take(1),
-                tap(filmDetails => this.filmDetails = filmDetails)
-            ).subscribe();
-    }
+	private setFilmDeTails(filmId: string) {
+		return this.filmService.filmById(filmId)
+			.pipe(
+				take(1),
+				tap(filmDetails => this.filmDetails = filmDetails)
+			).subscribe();
+	}
 
 }
