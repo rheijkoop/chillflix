@@ -28,11 +28,11 @@ export class FilmService {
 		const parameters = FilmService.defaultSearchParams.append('i', filmId);
 		return this.http.get<OMDBDetailResponse>(FilmService.api, {params: parameters})
 			.pipe(
-				map(FilmService.OMDBDetailtoFilmDetail)
+				map(FilmService.OMDBDetailToFilmDetail)
 			);
 	}
 
-	private static OMDBDetailtoFilmDetail(omdbDetail: OMDBDetailResponse): FilmDetail {
+	private static OMDBDetailToFilmDetail(omdbDetail: OMDBDetailResponse): FilmDetail {
 		return new FilmDetail(
 			omdbDetail.Title,
 			omdbDetail.Year,
