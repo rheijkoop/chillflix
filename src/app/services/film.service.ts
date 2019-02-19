@@ -11,13 +11,13 @@ import {FilmDetail} from '../models/film-detail.model';
 export class FilmService {
 	private static api = 'http://www.omdbapi.com';
 	private static apiKey = 'e36ea2a2';
-	private defaultSearchParams = new HttpParams({fromObject: {apikey: FilmService.apiKey}});
+	private static defaultSearchParams = new HttpParams({fromObject: {apikey: FilmService.apiKey}});
 
 	constructor(private http: HttpClient) {
 	}
 
 	public search(title: string): Observable<Film[]> {
-		const parameters = this.defaultSearchParams.append('s', title);
+		const parameters = FilmService.defaultSearchParams.append('s', title);
 		return this.http.get<IOMDBSearchResponse>(FilmService.api, {params: parameters})
 			.pipe(
 				map(FilmService.IOMDBSearchResponseToFilmsMapper)
@@ -25,7 +25,7 @@ export class FilmService {
 	}
 
 	public filmById(filmId: string) {
-		const parameters = this.defaultSearchParams.append('i', filmId);
+		const parameters = FilmService.defaultSearchParams.append('i', filmId);
 		return this.http.get<OMDBDetailResponse>(FilmService.api, {params: parameters})
 			.pipe(
 				map(FilmService.OMDBDetailtoFilmDetail)
