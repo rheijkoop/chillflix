@@ -21,7 +21,10 @@ export class FilmDetailsComponent implements OnInit {
 
     ngOnInit() {
         this.activatedRoute.params
-            .pipe(tap(params => this.setFilmDeTails(params.imdbId)))
+            .pipe(
+                tap(params => this.setFilmDeTails(params.imdbId)),
+                take(1)
+            )
             .subscribe();
     }
 

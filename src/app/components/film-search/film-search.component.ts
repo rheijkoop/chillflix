@@ -20,6 +20,5 @@ export class FilmSearchComponent {
                 take(1),
                 tap(filmResponse => this.films = filmResponse),
             ).subscribe();
-
     }
 }
