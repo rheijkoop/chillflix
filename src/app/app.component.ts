@@ -1,14 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FilmService} from './services/film.service';
-import {Film} from './models/film';
-import {take, tap} from 'rxjs/operators';
-import {Subscription} from 'rxjs';
+import {Component} from '@angular/core';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.scss']
 })
-export class AppComponent{
+export class AppComponent {
 
 }

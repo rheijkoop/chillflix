@@ -4,21 +4,22 @@ import {FilmService} from '../../services/film.service';
 import {take, tap} from 'rxjs/operators';
 
 @Component({
-    selector: 'app-film-search',
-    templateUrl: './film-search.component.html',
-    styleUrls: ['./film-search.component.scss']
+	selector: 'app-film-search',
+	templateUrl: './film-search.component.html',
+	styleUrls: ['./film-search.component.scss']
 })
 export class FilmSearchComponent {
-    public films: Film[] = [];
-    public userInput: string | undefined = undefined;
+	public films: Film[] | undefined | null = undefined;
+	public userInput: string | undefined = undefined;
 
-    constructor(private filmsService: FilmService) {}
+	constructor(private filmsService: FilmService) {}
 
-    public handleSearchInputChange(input: string): void {
-        this.filmsService.search(input)
-            .pipe(
-                take(1),
-                tap(filmResponse => this.films = filmResponse),
-            ).subscribe();
-    }
+	public handleSearchInputChange(input: string): void {
+		this.films = null;
+		this.filmsService.search$(input)
+			.pipe(
+				take(1),
+				tap(filmResponse => this.films = filmResponse),
+			).subscribe();
+	}
 }
