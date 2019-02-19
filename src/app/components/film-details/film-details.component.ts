@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FilmDetail} from '../../models/film-detail.model';
-import {FilmService} from "../../services/film.service";
-import {take, tap} from "rxjs/operators";
+import {FilmService} from '../../services/film.service';
+import {take, tap} from 'rxjs/operators';
+
 
 @Component({
     selector: 'app-film-details',
