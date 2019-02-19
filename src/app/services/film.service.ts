@@ -25,7 +25,7 @@ export class FilmService {
     }
 
     public filmById(filmId: string) {
-        const parameters = this.defaultSearchParams.append('i', filmId);
+        const parameters = this.defaultSearchParams.append('it', filmId);
         return this.http.get<OMDBDetailResponse>(FilmService.api, {params: parameters})
             .pipe(
                 map(FilmService.OMDBDetailtoFilmDetail)
