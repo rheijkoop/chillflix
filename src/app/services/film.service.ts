@@ -9,8 +9,8 @@ import {FilmDetail} from '../models/film-detail.model';
     providedIn: 'root'
 })
 export class FilmService {
-    private static api: string = 'http://www.omdbapi.com';
-    private static apiKey: string = 'e36ea2a2';
+    private static api = 'http://www.omdbapi.com';
+    private static apiKey = 'e36ea2a2';
     private defaultSearchParams = new HttpParams({fromObject: {apikey: FilmService.apiKey}});
 
     constructor(private http: HttpClient) {
