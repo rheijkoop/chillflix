@@ -11,12 +11,10 @@ import {take, tap} from 'rxjs/operators';
     styleUrls: ['./film-details.component.scss']
 })
 export class FilmDetailsComponent implements OnInit {
-
     public filmDetails: FilmDetail | undefined = undefined;
 
     constructor(private activatedRoute: ActivatedRoute,
-                private filmService: FilmService
-                ) {
+                private filmService: FilmService) {
     }
 
     ngOnInit() {
@@ -35,5 +33,4 @@ export class FilmDetailsComponent implements OnInit {
                 tap(filmDetails => this.filmDetails = filmDetails)
             ).subscribe();
     }
-
 }

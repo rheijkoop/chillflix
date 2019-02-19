@@ -65,7 +65,7 @@ export class FilmService {
         return omdbSearchResponse.Search.map(FilmService.OMDBMovieToFilm);
     }
 
-    private static OMDBMovieToFilm(omdbFilm: OMDBFilm): Film {
+    private static OMDBMovieToFilm(omdbFilm: OMDBFilm): Film[] {
         return new Film(omdbFilm.Poster, omdbFilm.Title, omdbFilm.Type, omdbFilm.Year, omdbFilm.imdbID);
     }
 }
