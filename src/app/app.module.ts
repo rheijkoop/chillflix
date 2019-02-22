@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {HomeComponent} from './components/home/home.component';
 import {FilmSearchComponent} from './components/film-search/film-search.component';
 import {FilmDetailsComponent} from './components/film-details/film-details.component';
+import {FilmListItemComponent} from './shared/components/film-list-item/film-list-item.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {FilmDetailsComponent} from './components/film-details/film-details.compo
 		FilterPipe,
 		HomeComponent,
 		FilmSearchComponent,
-		FilmDetailsComponent
+		FilmDetailsComponent,
+		FilmListItemComponent
 	],
 	imports: [
 		BrowserModule,
