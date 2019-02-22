@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Film} from '../../../models/film';
 
 @Component({
@@ -8,12 +8,16 @@ import {Film} from '../../../models/film';
 })
 export class FilmListItemComponent implements OnInit {
 	@Input() public film?: Film = undefined;
+	@Output() public onAddToBucket = new EventEmitter<Film>();
 
 	constructor() {
 	}
 
 	ngOnInit() {
-		console.log(this.film);
+	}
+
+	public handleAddToBucketClick() {
+		this.onAddToBucket.emit(this.film);
 	}
 
 }

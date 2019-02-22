@@ -11,6 +11,7 @@ import {take, tap} from 'rxjs/operators';
 export class FilmSearchComponent {
 	public films: Film[] | undefined | null = undefined;
 	public userInput: string | undefined = undefined;
+	public bucket: Film[] = [];
 
 	constructor(private filmsService: FilmService) {}
 
@@ -21,5 +22,13 @@ export class FilmSearchComponent {
 				take(1),
 				tap(filmResponse => this.films = filmResponse),
 			).subscribe();
+	}
+
+	public handleOnAddToBucket(film: Film): void {
+		this.bucket = [...this.bucket, film];
+	}
+
+	public handleOnRemoveFilm(filmToRemove: Film): void {
+		this.bucket = this.bucket.filter(film => film.imdbId !== filmToRemove.imdbId);
 	}
 }

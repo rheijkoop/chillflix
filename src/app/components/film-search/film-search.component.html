@@ -5,7 +5,7 @@
        (change)="handleSearchInputChange(userInput)">
 
 <div class="d-flex justify-content-around" *ngIf="films !== null; else showSpinner">
-    <app-film-list-item *ngFor="let film of films" [film]="film" >
+    <app-film-list-item *ngFor="let film of films" [film]="film" (onAddToBucket)="handleOnAddToBucket($event)">
     </app-film-list-item>
 </div>
 <ng-template #showSpinner>
@@ -13,3 +13,5 @@
         <span class="sr-only">Loading...</span>
     </div>
 </ng-template>
+
+<app-film-bucket [bucketFilms]="bucket" (onRemoveFilm)="handleOnRemoveFilm($event)"></app-film-bucket>

@@ -11,6 +11,7 @@ import {HomeComponent} from './components/home/home.component';
 import {FilmSearchComponent} from './components/film-search/film-search.component';
 import {FilmDetailsComponent} from './components/film-details/film-details.component';
 import {FilmListItemComponent} from './shared/components/film-list-item/film-list-item.component';
+import { FilmBucketComponent } from './shared/components/film-bucket/film-bucket.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {FilmListItemComponent} from './shared/components/film-list-item/film-lis
 		HomeComponent,
 		FilmSearchComponent,
 		FilmDetailsComponent,
-		FilmListItemComponent
+		FilmListItemComponent,
+		FilmBucketComponent
 	],
 	imports: [
 		BrowserModule,
