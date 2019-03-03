@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Film} from '../models/film';
-import {map} from 'rxjs/operators';
+import {map, take} from 'rxjs/operators';
 import {FilmDetail} from '../models/film-detail.model';
 
 @Injectable({
@@ -13,6 +13,8 @@ export class FilmService {
 	private static apiKey = 'e36ea2a2';
 	private static defaultSearchParams = new HttpParams({fromObject: {apikey: FilmService.apiKey}});
 
+	private searchCacheSubject = new BehaviorSubject<{key: string, value: Film[]}[] | undefined>(undefined)
+
 	constructor(private http: HttpClient) {
 	}
 
@@ -20,8 +22,9 @@ export class FilmService {
 		const parameters = FilmService.defaultSearchParams.append('s', title);
 		return this.http.get<IOMDBSearchResponse>(FilmService.api, {params: parameters})
 			.pipe(
-				map(FilmService.IOMDBSearchResponseToFilmsMapper)
-			);
+				map(FilmService.IOMDBSearchResponseToFilmsMapper),
+				take(1)
+			)
 	}
 
 	public filmById$(filmId: string) {

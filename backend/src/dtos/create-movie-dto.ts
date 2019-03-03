@@ -1,5 +1,6 @@
 import {ApiModelProperty} from "@nestjs/swagger";
 import {IsNumber, IsString} from 'class-validator';
+import {MovieEntity} from '../entities/movie-entity';
 
 export class CreateMovieDto {
 	@IsString()
@@ -22,7 +23,7 @@ export class CreateMovieDto {
 	@ApiModelProperty()
 	public readonly posterUrl: string;
 
-	play() {
-		console.log("movie is playing");
+	movieEntity(): MovieEntity {
+		return new MovieEntity(this.title, this.year, this.imdbId, this.type, this.posterUrl)
 	}
 }
