@@ -10,11 +10,11 @@ export class MovieController {
 
 	@Post()
 	saveMovie(@Body() createMovieDto: CreateMovieDto) {
-		this.movieService.saveCreateMovieDto(createMovieDto);
+		this.movieService.saveUser(createMovieDto);
 	}
 
 	@Get()
 	getMovies(): Promise<Movie[]> {
-		return this.movieService.getMovies();
+		return this.movieService.movies();
 	}
 }

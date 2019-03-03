@@ -5,6 +5,8 @@ import {MovieController} from './controllers/movie/movie.controller';
 import {MovieService} from './services/movie/movie.service';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {MovieEntity} from './entities/movie-entity';
+import {UsersController} from './controllers/users/users.controller';
+import {UsersModule} from './features/users/users.module';
 
 @Module({
 	imports: [
@@ -19,9 +21,10 @@ import {MovieEntity} from './entities/movie-entity';
 			synchronize: true,
 			logging: true
 		}),
-		TypeOrmModule.forFeature([MovieEntity]) // uitzoeken!!!
+		TypeOrmModule.forFeature([MovieEntity]),
+		UsersModule
 	],
-	controllers: [AppController, MovieController],
+	controllers: [AppController, MovieController, UsersController],
 	providers: [AppService, MovieService],
 })
 export class AppModule {

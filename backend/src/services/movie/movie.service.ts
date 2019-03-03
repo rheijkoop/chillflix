@@ -10,12 +10,12 @@ export class MovieService {
 	constructor(@InjectRepository(MovieEntity) private readonly movieRepository: Repository<MovieEntity>) {
 	}
 
-	async getMovies(): Promise<Movie []> {
+	async movies(): Promise<Movie []> {
 		const moviesEntities = await this.movieRepository.find();
 		return moviesEntities.map(movieEntity => movieEntity.movie());
 	}
 
-	async saveCreateMovieDto(createMovieDto: CreateMovieDto): Promise<MovieEntity> {
+	async saveUser(createMovieDto: CreateMovieDto): Promise<MovieEntity> {
 		return this.movieRepository.save(createMovieDto.movieEntity());
 	}
 }

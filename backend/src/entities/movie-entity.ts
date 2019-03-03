@@ -1,7 +1,7 @@
 import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 import {Movie} from '../models/movie';
 
-@Entity()
+@Entity("movie")
 export class MovieEntity {
 	@PrimaryGeneratedColumn() public readonly id?: number;
 	@Column('varchar') public readonly title: string;
