@@ -1,0 +1,6 @@
+<div class="card">
+  <div class="p-3">{{film.title}}</div>
+  <img src="{{film.poster}}" class="w-100">
+</div>
+<button class="btn btn-primary" [routerLink]="'/film-details/' + film.imdbId">details</button>
+<button class="btn btn-primary" (click)="handleAddToBucketClick()">film toevoegen aan bucket</button>

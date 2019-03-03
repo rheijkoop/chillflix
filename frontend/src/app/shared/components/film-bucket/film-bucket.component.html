@@ -1,0 +1,8 @@
+<div class="film-bucket">
+    <div *ngFor="let film of bucketFilms" class="row">
+        <div class="col-8">{{film.title}}</div>
+        <div class="col-4">
+            <button class="btn btn-primary" (click)="handleDeleteButtonClick(film)">X</button>
+        </div>
+    </div>
+</div>
