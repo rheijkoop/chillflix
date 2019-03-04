@@ -19,7 +19,7 @@ import {UsersModule} from './features/users/users.module';
 			database: 'chillflix',
 			entities: [__dirname + '/**/*-entity{.ts,.js}'],
 			synchronize: true,
-			logging: true
+			logging: false
 		}),
 		TypeOrmModule.forFeature([MovieEntity]),
 		UsersModule

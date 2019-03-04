@@ -1,9 +1,12 @@
-import {Body, Controller, Get, Post} from '@nestjs/common';
+import {Body, Controller, Get, Post, UseGuards} from '@nestjs/common';
 import {CreateMovieDto} from '../../dtos/create-movie-dto';
 import {Movie} from '../../models/movie';
 import {MovieService} from '../../services/movie/movie.service';
+import {ApiUseTags} from '@nestjs/swagger';
+import {AuthGuard} from '@nestjs/passport';
 
-@Controller('movie')
+@ApiUseTags('movies')
+@Controller('movies')
 export class MovieController {
 	constructor(private movieService: MovieService) {
 	}
@@ -14,7 +17,11 @@ export class MovieController {
 	}
 
 	@Get()
+	@UseGuards(AuthGuard())
 	getMovies(): Promise<Movie[]> {
 		return this.movieService.movies();
 	}
 }
+
+
+
