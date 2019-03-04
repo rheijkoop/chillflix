@@ -12,8 +12,8 @@ export class UsersService {
 	}
 
 	public async saveUser(createUserDto: CreateUserDto): Promise<UserEntity> {
-		const userExists = await this.userRepository.find({where: {userName: createUserDto.userName}});
-		if (!userExists) return this.userRepository.save(createUserDto.userEntity());
+		const existingUsers = await this.userRepository.find({where: {userName: createUserDto.userName}});
+		if (existingUsers.length === 0) return this.userRepository.save(createUserDto.userEntity());
 		else throw new HttpException('User already exists', HttpStatus.CONFLICT)
 	}
 
@@ -25,6 +25,10 @@ export class UsersService {
 	public async user(userId: string): Promise<User> {
 		const userEntity = await this.userRepository.findOne(userId);
 		return userEntity.user();
+	}
+
+	public async deleteUsers(): Promise<void> {
+		return await this.userRepository.clear();
 	}
 
 	public findUserByCredentials(userCredentials: UserLoginDto) {

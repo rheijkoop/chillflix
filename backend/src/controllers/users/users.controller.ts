@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, Post, UseGuards} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, UseGuards} from '@nestjs/common';
 import {CreateUserDto} from '../../dtos/create-user-dto';
 import {UsersService} from '../../features/users/services/users/users.service';
 import {User} from '../../features/users/models/user';
@@ -17,14 +17,19 @@ export class UsersController {
 	}
 
 	@Get()
-	@UseGuards(AuthGuard())
+	//@UseGuards(AuthGuard())
 	users(): Promise<User[]> {
 		return this.usersService.users();
 	}
 
 	@Get(':userid')
-	@UseGuards(AuthGuard())
+	//@UseGuards(AuthGuard())
 	user(@Param('userid') userId: string): Promise<User> {
 		return this.usersService.user(userId);
+	}
+
+	@Delete()
+	deleteUser() {
+		return this.usersService.deleteUsers();
 	}
 }
