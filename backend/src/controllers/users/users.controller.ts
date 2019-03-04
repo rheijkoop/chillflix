@@ -1,9 +1,8 @@
-import {Body, Controller, Delete, Get, Param, Post, UseGuards} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post} from '@nestjs/common';
 import {CreateUserDto} from '../../dtos/create-user-dto';
 import {UsersService} from '../../features/users/services/users/users.service';
 import {User} from '../../features/users/models/user';
 import {ApiUseTags} from '@nestjs/swagger';
-import {AuthGuard} from '@nestjs/passport';
 
 @ApiUseTags('users')
 @Controller('users')
