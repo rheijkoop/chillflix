@@ -13,7 +13,7 @@ export class UsersService {
 
 	public async saveUser(createUserDto: CreateUserDto): Promise<UserEntity> {
 		const userExists = await this.userRepository.find({where: {userName: createUserDto.userName}});
-		if (!userExists) return this.userRepository.save(createUserDto.userEntity()); 
+		if (!userExists) return this.userRepository.save(createUserDto.userEntity());
 		else throw new HttpException('User already exists', HttpStatus.CONFLICT)
 	}
 
@@ -29,8 +29,7 @@ export class UsersService {
 
 	public findUserByCredentials(userCredentials: UserLoginDto) {
 		return this.userRepository.find({
-			where:
-				{userName: userCredentials.userName, password: userCredentials.passWord}
+			where: {userName: userCredentials.userName, password: userCredentials.passWord}
 		})
 	}
 
