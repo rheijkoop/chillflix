@@ -4,7 +4,7 @@ import {User} from '../models/user';
 @Entity("user")
 export class UserEntity {
 	@PrimaryGeneratedColumn() public readonly id?: number;
-	@Column('varchar'/*, {unique: true}*/) public readonly userName: string;
+	@Column('varchar', {unique: true}) public readonly userName: string;
 	@Column('integer') public readonly age: number;
 	@Column('varchar') public readonly password: string;
 
